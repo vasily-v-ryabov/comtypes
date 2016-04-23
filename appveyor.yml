@@ -58,14 +58,14 @@ test_script:
   - "python setup.py test"
 
 
-after_test: false
-  # Generate coverage report on codecov.io (token is not required for AppVeyor)
-  #- coverage xml
-  #- codecov
+#after_test:
+#  # Generate coverage report on codecov.io (token is not required for AppVeyor)
+#  - coverage xml
+#  - codecov
 
-artifacts: false
-  # Archive the generated coverage report in the ci.appveyor.com build report.
-  #- path: Coverage_report
+#artifacts:
+#  # Archive the generated coverage report in the ci.appveyor.com build report.
+#  - path: Coverage_report
 
 #on_success:
 #  - TODO: 
