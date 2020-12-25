@@ -484,6 +484,13 @@ class Parser(object):
         # possible ta.wTypeFlags: helpstring, helpcontext, licensed,
         #        version, control, hidden, and appobject
         coclass_name, doc = tinfo.GetDocumentation(-1)[0:2]
+
+        # Make valid COM class name valid for Python as well.
+        # It will change typelib interface, but it could be imported at least.
+        # It fixes the issue: https://github.com/enthought/comtypes/issues/217
+        if coclass_name and coclass_name[0].isdigit():
+            coclass_name = '_' + coclass_name
+
         tlibattr = tinfo.GetContainingTypeLib()[0].GetLibAttr()
         coclass = typedesc.CoClass(coclass_name,
                                    str(ta.guid),
